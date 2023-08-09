@@ -32,14 +32,7 @@ public class HomePage extends AppCompatActivity {
             }
         });
 
-        findViewById(R.id.buttonCombinationBreakdown).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // Start the EqualBreakdownActivity
-                Intent intent = new Intent(HomePage.this, EqualBreakdown.class);
-                startActivity(intent);
-            }
-        });
+
 
 
         buttonSavedResults = findViewById(R.id.buttonSavedResults);
