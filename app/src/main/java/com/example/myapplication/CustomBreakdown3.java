@@ -85,6 +85,7 @@ public class CustomBreakdown3 extends AppCompatActivity {
         List<Double> ratios = new ArrayList<>();
 
         // Collect individual ratios from input fields
+        boolean hasInput = false; // Flag to check if there's at least one input
         for (int i = 0; i < numPeople; i++) {
             EditText editText = (EditText) layoutIndividualAmounts.getChildAt(i);
             String inputText = editText.getText().toString().trim();
@@ -92,9 +93,16 @@ public class CustomBreakdown3 extends AppCompatActivity {
             if (!inputText.isEmpty()) {
                 double ratio = Double.parseDouble(inputText);
                 ratios.add(ratio);
+                hasInput = true; // Set the flag to true if there's an input
             }
         }
 
+        if (!hasInput) {
+            Toast.makeText(this, "Enter at least one ratio", Toast.LENGTH_SHORT).show();
+            return; // Exit the method without further calculations
+        }
+
+        // Continue with the rest of the calculations
         // Calculate individual amounts based on ratios and total bill
         Intent intent = getIntent();
         String totalAmount = intent.getStringExtra("totalAmount");
@@ -103,7 +111,7 @@ public class CustomBreakdown3 extends AppCompatActivity {
         List<Double> individualAmounts = calculateIndividualAmounts(ratios, totalBill);
 
         // Display the calculated individual amounts using a popup dialog
-        showCalculatedAmounts(individualAmounts,ratios);
+        showCalculatedAmounts(individualAmounts, ratios);
     }
 
     private List<Double> calculateIndividualAmounts(List<Double> ratios, double totalBill) {

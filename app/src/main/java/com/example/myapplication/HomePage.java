@@ -33,8 +33,6 @@ public class HomePage extends AppCompatActivity {
         });
 
 
-
-
         buttonSavedResults = findViewById(R.id.buttonSavedResults);
 
         // Set a click listener for the button
